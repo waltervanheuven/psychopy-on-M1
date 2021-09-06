@@ -156,6 +156,8 @@ psychopy
 
     Are issues with PTB due to PortAudio and libHID_Utilities static libraries which require a rebuild for Apple Silicon?
 
+    PsychoPy also runs without psychtoolbox installed (remove with `pip uninstall psychtoolbox`).
+
 - mp4 movies are not working.
 
 - core.wait() is not working.
