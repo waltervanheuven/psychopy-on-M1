@@ -97,15 +97,13 @@ This breaks audio timing (?) but at least it compiles.
 
 ## Install Psychtoolbox
 
-Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/).
-Download `psychtoolbox-3.0.17.8.zip`
-
-Download: [ptb-wheels source] (https://github.com/aforren1/ptb-wheels)
+- Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
+- Download: [ptb-wheels source] (https://github.com/aforren1/ptb-wheels)
 
 From folder `ptb-wheels`:
 
-Copy file `libportaudio_osx_64.a` to `PsychSourceGL/Cohorts/PortAudio/`
-Copy file `libHID_Utilities64.a` to `PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
+- Copy file `libportaudio_osx_64.a` to `PsychSourceGL/Cohorts/PortAudio/`
+- Copy file `libHID_Utilities64.a` to `PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
 
 In folder `psychtoolbox-3.0.17.8` type:
 
