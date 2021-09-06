@@ -2,7 +2,7 @@
 
 The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install an Apple Silicon native version of PsychoPy on an M1 Mac using `pip install psychopy`.
 
-## First install latest Python for M1 Macs
+## Install Python for M1 Macs
 
 Use [brew](https://brew.sh) to install latest version of Python for M1 Macs.
 
@@ -12,7 +12,7 @@ brew install python3
 
 Python 3.9.7 (3 September 2021).
 
-## QT5
+## Install QT5
 
 Install QT5 using brew. Requires venv with system-site-packages to work in Python.
 
@@ -20,7 +20,7 @@ Install QT5 using brew. Requires venv with system-site-packages to work in Pytho
 brew install pyqt5
 ```
 
-## Create virtual environment with system-site-packages.
+## Create virtual environment with system-site-packages
 
 ```sh
 python3 -m venv --system-site-packages ~/venv/psychopy
