@@ -93,6 +93,12 @@ Add the following line to the file `include/ad_coreaudio.h` after line 24 to fix
 #include <CoreAudio/HostTime.h>
 ```
 
+After fixing the missing header file install pyo again.
+
+```sh
+python setup.py install --use-coreaudio --use-double
+```
+
 ## Install Psychtoolbox
 
 - Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
