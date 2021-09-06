@@ -1,11 +1,10 @@
 # PsychoPy v2021.2.3 on M1 Mac (Apple Silicon)
 
-Current version of [PsychoPy](https://www.psychopy.org) runs using Rosetta. Below are the instructions how to install an 
-Apple Silicon version of PsychoPy.
+The current version of [PsychoPy](https://www.psychopy.org) uses Rosetta 2 to run on M1 Macs. Below are the instructions to install an Apple Silicon native version of PsychoPy on an M1 Mac.
 
-## First install latest python for M1 Macs using [brew](https://brew.sh)
+## First install latest python for M1 Macs
 
-Install latest python3 version on M1 Mac (tested with M1 MacBook Pro).
+Install the latest native Python3 version for M1 Macs (tested with M1 MacBook Pro) using [brew](https://brew.sh).
 
 ```sh
 brew install python3
@@ -27,19 +26,19 @@ Create virtual environment with system-site-packages.
 python3 -m venv --system-site-packages ~/venv/psychopy
 ```
 
-activate virtual environment
+Activate the virtual environment.
 
 ```sh
 source ~/venv/psychopy/bin/activate
-````
+```
 
-## numpy
+## Install numpy
 
 ```sh
 pip install numpy
 ```
 
-## scipy
+## Install scipy
 
 ```sh
 export OPENBLAS=$(brew --prefix openblas)
@@ -48,7 +47,7 @@ pip install Cython pybind11 pythran
 pip install --no-use-pep517 scipy
 ```
 
-## pygame
+## Install pygame
 
 ```sh
 brew install mercurial
@@ -61,7 +60,7 @@ brew install sdl2
 pip install pygame
 ```
 
-## tables
+## Install tables
 
 ```sh
 brew install hdf5 c-blosc lzo bzip2
@@ -73,7 +72,7 @@ export BZIP2_DIR=/opt/homebrew/opt/bzip2
 pip install tables
 ```
 
-## pyo
+## Install pyo
 
 ```sh
 brew install liblo libsndfile portaudio portmidi
@@ -94,7 +93,7 @@ Hack to get pyo to compile. Change line 132 in ad_coreaudio.c to
     now.mHostTime = 0 ; // AudioGetCurrentHostTime();
 ```
 
-## PsychToolbox
+## Install PsychToolbox
 
 Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/).
 Download `psychtoolbox-3.0.17.8.zip`
@@ -102,6 +101,7 @@ Download `psychtoolbox-3.0.17.8.zip`
 Download: [ptb-wheels source] (https://github.com/aforren1/ptb-wheels)
 
 From folder `ptb-wheels`:
+
 Copy file `libportaudio_osx_64.a` to `PsychSourceGL/Cohorts/PortAudio/`
 Copy file `libHID_Utilities64.a` to `PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
 
@@ -114,17 +114,26 @@ python setup.py install
 pip list
 ```
 
-## Final steps
+## Install wxPython
 
 ```sh
 export CXXFLAGS=-I/opt/homebrew/include
 pip install wxPython
 
-# needed for mp4
-pip install ffmpeg
+## Install ffmpeg
 
-# install now psychopy
+```sh
+## needed for mp4
+brew install ffmpeg
+```
+
+## Install Psychopy
+
+```sh
 pip install psychopy
+
+# start psychopy
+psychopy
 ```
 
 ## Issues
