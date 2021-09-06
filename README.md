@@ -87,7 +87,7 @@ Error:
 src/engine/ad_coreaudio.c:132:21: error: implicit declaration of function 'AudioGetCurrentHostTime' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
 ```
 
-Add the following line to the file `include/ad_coreaudio.h` after line 24 to correct error:
+Add the following line to the file `include/ad_coreaudio.h` after line 24 to fix the issue:
 
 ```txt
 #include <CoreAudio/HostTime.h>
