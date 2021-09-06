@@ -104,10 +104,10 @@ python setup.py install --use-coreaudio --use-double
 - Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
 - Download: [ptb-wheels source] (https://github.com/aforren1/ptb-wheels)
 
-From folder `ptb-wheels`:
+From folder `ptb-wheels-master`:
 
-- Copy file `libportaudio_osx_64.a` to `PsychSourceGL/Cohorts/PortAudio/`
-- Copy file `libHID_Utilities64.a` to `PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
+- Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/Cohorts/PortAudio/libportaudio_osx_64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/PortAudio/`
+- Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
 
 In folder `psychtoolbox-3.0.17.8` type:
 
@@ -149,9 +149,12 @@ psychopy
 
 ## Issues
 
-- Audio issues. Switching to PTB breaks PsychoPy.
+- Audio issues. Switching to PTB (Psychtoolbox) breaks PsychoPy.
 - Psychtoolbox issues:
     Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef
+
+    Issues with PTB are I think due to PortAudio and libHID_Utilities static libraries that require a rebuild for Apple Silicon.
+
 - mp4 movies are not working.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
