@@ -154,9 +154,11 @@ psychopy
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
-    Issues with PTB are I think due to PortAudio and libHID_Utilities static libraries that require a rebuild for Apple Silicon.
+    Are issues with PTB due to PortAudio and libHID_Utilities static libraries which require a rebuild for Apple Silicon?
 
 - mp4 movies are not working.
+
+- core.wait() is not working.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
