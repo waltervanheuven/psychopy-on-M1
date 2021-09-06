@@ -149,7 +149,8 @@ psychopy
 
 ## Issues
 
-- Audio issues. Switching to PTB (Psychtoolbox) breaks PsychoPy.
+- Audio issues. Switching audio library in PsychoPy Preferences to PTB (Psychtoolbox) breaks PsychoPy. Switching to pyo seems to help.
+
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
