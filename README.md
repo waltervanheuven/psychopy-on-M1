@@ -4,7 +4,7 @@ The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs thro
 
 ## First install latest Python for M1 Macs
 
-Install the latest native Python3 version for M1 Macs using [brew](https://brew.sh).
+Use [brew](https://brew.sh) to install latest version of Python for M1 Macs.
 
 ```sh
 brew install python3
