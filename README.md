@@ -1,6 +1,6 @@
 # PsychoPy v2021.2.3 on M1 Mac (Apple Silicon)
 
-The current version of [PsychoPy](https://www.psychopy.org) uses Rosetta 2 to run on M1 Macs. Below are the instructions to install an Apple Silicon native version of PsychoPy on an M1 Mac using `pip install psychopy`.
+The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are the instructions to install an Apple Silicon native version of PsychoPy on an M1 Mac using `pip install psychopy`.
 
 ## First install latest Python for M1 Macs
 
@@ -151,7 +151,7 @@ psychopy
 
 - Audio issues. Switching to PTB (Psychtoolbox) breaks PsychoPy.
 - Psychtoolbox issues:
-    Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef
+    `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
     Issues with PTB are I think due to PortAudio and libHID_Utilities static libraries that require a rebuild for Apple Silicon.
 
