@@ -20,7 +20,7 @@ Install QT5 using brew. Requires venv with system-site-packages to work in Pytho
 brew install pyqt5
 ```
 
-Create virtual environment with system-site-packages.
+## Create virtual environment with system-site-packages.
 
 ```sh
 python3 -m venv --system-site-packages ~/venv/psychopy
