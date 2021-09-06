@@ -87,10 +87,10 @@ Error:
 src/engine/ad_coreaudio.c:132:21: error: implicit declaration of function 'AudioGetCurrentHostTime' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
 ```
 
-Hack to get pyo to compile. Change line 132 in ad_coreaudio.c to
+Add the following line to the file `include/ad_coreaudio.h` after line 24 to correct error:
 
 ```txt
-    now.mHostTime = 0 ; // AudioGetCurrentHostTime();
+#include <CoreAudio/HostTime.h>
 ```
 
 This breaks audio timing (?) but at least it compiles.
