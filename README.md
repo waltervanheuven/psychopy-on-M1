@@ -93,6 +93,8 @@ Hack to get pyo to compile. Change line 132 in ad_coreaudio.c to
     now.mHostTime = 0 ; // AudioGetCurrentHostTime();
 ```
 
+This breaks audio timing (?) but at least it compiles.
+
 ## Install PsychToolbox
 
 Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/).
@@ -139,4 +141,5 @@ psychopy
 
 ## Issues
 
+- Audio issues. Switching to PTB breaks PsychoPy.
 - mp4 movies are not working
