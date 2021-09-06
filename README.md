@@ -95,7 +95,7 @@ Hack to get pyo to compile. Change line 132 in ad_coreaudio.c to
 
 This breaks audio timing (?) but at least it compiles.
 
-## Install PsychToolbox
+## Install Psychtoolbox
 
 Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/).
 Download `psychtoolbox-3.0.17.8.zip`
@@ -148,7 +148,9 @@ psychopy
 ## Issues
 
 - Audio issues. Switching to PTB breaks PsychoPy.
-- mp4 movies are not working
+- Psychtoolbox issues:
+    Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef
+- mp4 movies are not working.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
