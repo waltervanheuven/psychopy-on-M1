@@ -130,6 +130,12 @@ pip install wxPython
 brew install ffmpeg
 ```
 
+## Install SpeechRecognition
+
+```sh
+pip install SpeechRecognition
+```
+
 ## Install Psychopy
 
 ```sh
@@ -143,3 +149,9 @@ psychopy
 
 - Audio issues. Switching to PTB breaks PsychoPy.
 - mp4 movies are not working
+
+If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
+
+```sh
+rm ~/.psychopy3/userPrefs.cfg
+```
