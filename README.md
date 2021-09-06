@@ -119,6 +119,7 @@ pip list
 ```sh
 export CXXFLAGS=-I/opt/homebrew/include
 pip install wxPython
+```
 
 ## Install ffmpeg
 
