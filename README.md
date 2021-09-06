@@ -93,8 +93,6 @@ Add the following line to the file `include/ad_coreaudio.h` after line 24 to cor
 #include <CoreAudio/HostTime.h>
 ```
 
-This breaks audio timing (?) but at least it compiles.
-
 ## Install Psychtoolbox
 
 - Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
