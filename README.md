@@ -230,6 +230,8 @@ python setup.py install
     0.1993   -0.1993   2.8007
     ```
 
+    Issue is definition of `getTime()` in `clock.py` for macOS. Requires rewrite based on this [code](https://github.com/aforren1/toon/tree/master/toon/util).
+
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
 ```sh
