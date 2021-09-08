@@ -140,11 +140,39 @@ pip install SpeechRecognition
 
 ## Install Psychopy
 
+Installing PsychoPy and other dependencies.
+
 ```sh
 pip install psychopy
 
 # start psychopy
 psychopy
+```
+
+PsychoPy starts up and some things work (see below for issues). One of the issues is that `core.wait()` is not working. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
+
+```sh
+# move to source folder
+cd psychopy-release
+
+# uninstall psychopy
+pip uninstall psychopy
+```
+
+There are issues with pyglet in the function `core.wait()`. A hack that works is to set the hogCPUperoid to zero.
+
+In the file `build/lib/psychopy/clock.py` add a line to function `wait` (function starts at line 291):
+
+```python
+    from . import core
+
+    hogCPUperiod = 0
+```
+
+Install psychopy
+
+```sh
+python setup.py install
 ```
 
 ## Issues
@@ -156,11 +184,9 @@ psychopy
 
     Are issues with PTB due to PortAudio and libHID_Utilities static libraries which require a rebuild for Apple Silicon?
 
-    PsychoPy also runs without psychtoolbox installed (remove with `pip uninstall psychtoolbox`).
+    PsychoPy also runs when psychtoolbox is removed after installing psychopy.
 
 - mp4 movies are not working.
-
-- core.wait() is not working.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
