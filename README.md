@@ -173,6 +173,8 @@ In the file `build/lib/psychopy/clock.py` add a line to function `wait` (functio
     hogCPUperiod = 0
 ```
 
+Reason for the `core.wait()` problem is related to macOS code for `getTime()` in `clock.py` (more info can be found below).
+
 Install psychopy
 
 ```sh
