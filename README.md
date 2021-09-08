@@ -41,6 +41,10 @@ pip install numpy
 ## Install scipy
 
 ```sh
+brew install openblas
+```
+
+```sh
 export OPENBLAS=$(brew --prefix openblas)
 export CFLAGS="-falign-functions=8 ${CFLAGS}"
 pip install Cython pybind11 pythran
@@ -101,8 +105,8 @@ python setup.py install --use-coreaudio --use-double
 
 ## Install Psychtoolbox
 
-- Download [psychtoolbox from pypi] (https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
-- Download: [ptb-wheels source] (https://github.com/aforren1/ptb-wheels)
+- Download [psychtoolbox from pypi] (<https://pypi.org/project/psychtoolbox/3.0.17.8/>). Download `psychtoolbox-3.0.17.8.zip`
+- Download: [ptb-wheels source] (<https://github.com/aforren1/ptb-wheels>)
 
 From folder `ptb-wheels-master`:
 
@@ -132,10 +136,10 @@ pip install wxPython
 brew install ffmpeg
 ```
 
-## Install SpeechRecognition
+## Install other libraries (not in requirements.txt but needed for some demos)
 
 ```sh
-pip install SpeechRecognition
+pip install SpeechRecognition pyfilesec
 ```
 
 ## Install Psychopy
@@ -177,16 +181,14 @@ python setup.py install
 
 ## Issues
 
-- Audio issues. Switching audio library in PsychoPy Preferences to PTB (Psychtoolbox) breaks PsychoPy. Switching to pyo seems to help.
+- Audio issues. Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` is the solution. Audio of mp4 movies are working.
 
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
     Are issues with PTB due to PortAudio and libHID_Utilities static libraries which require a rebuild for Apple Silicon?
 
-    PsychoPy also runs when psychtoolbox is removed after installing psychopy.
-
-- mp4 movies are not working.
+- Playing mp4 movies is not working.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
