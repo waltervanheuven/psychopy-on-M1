@@ -221,11 +221,11 @@ python setup.py install
     The follow change fixes I think the timer issue:
 
     ```python
-    # scalingfactor
-    _scalingfactor = _timebase.numer / _timebase.denom
+    # scaling factor
+    _scaling_factor = _timebase.numer / _timebase.denom
     
     def getTime():
-        return (_mach_absolute_time() * _scalingfactor) / 1.0e9
+        return (_mach_absolute_time() * _scaling_factor) / 1.0e9
     ```
 
     The `Benchmark wizard` now works as well as `timeByFramesEx.py`.
