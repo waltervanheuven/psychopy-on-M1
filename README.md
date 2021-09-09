@@ -216,16 +216,16 @@ python setup.py install
     2.9988   -2.9988   0.0012
     ```
 
-    `_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the tick duration. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
+    `_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the scaling factor. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
 
     The follow change fixes I think the timer issue:
 
     ```python
-    # duration of tick 
-    _tick_duration = _timebase.numer / _timebase.denom
+    # scalingfactor
+    _scalingfactor = _timebase.numer / _timebase.denom
     
     def getTime():
-        return (_mach_absolute_time() * _tick_duration) / 1.0e9
+        return (_mach_absolute_time() * _scalingfactor) / 1.0e9
     ```
 
     The `Benchmark wizard` now works as well as `timeByFramesEx.py`.
