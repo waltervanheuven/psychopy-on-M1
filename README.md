@@ -122,6 +122,8 @@ python setup.py install
 pip list
 ```
 
+However, importing `psychtoolbox` in Python fails at the moment due to ImportError (`from .PsychHID import PsychHID` fails).
+
 ## Install wxPython
 
 ```sh
@@ -188,13 +190,16 @@ python setup.py install
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
-    Are issues with PTB due to PortAudio and libHID_Utilities static libraries which require a rebuild for Apple Silicon?
+    Issue with importing PsychHID. `psychtoolbox` import fails.
 
 - Playing mp4 movies is not working.
 
 - `clocksAndTimers.py` not working as expected.
 
-    Output:
+    Issue is the definition of `getTime()` in `clock.py`, which doesn't work properly on Apple Silicon.
+    Because `psychtoolbox` import fails, `getTime()` is defined based on the `darwin` specific code in `clock.py`.
+
+    Output
 
     ```txt
     down       up          clock
@@ -211,28 +216,15 @@ python setup.py install
     2.9988   -2.9988   0.0012
     ```
 
-    Should be: (output PsychoPy running through Rosetta)
+    The follow change fixes the timer issue:
 
-    ```txt
-    down       up          clock
-    3.0000   -3.0000   0.0000
-    2.7999   -2.7999   0.2001
-    2.5998   -2.5998   0.4002
-    2.3998   -2.3998   0.6002
-    2.1998   -2.1997   0.8003
-    1.9997   -1.9997   1.0003
-    1.7996   -1.7996   1.2004
-    1.5996   -1.5996   1.4004
-    1.3995   -1.3995   1.6005
-    1.1995   -1.1995   1.8005
-    0.9994   -0.9994   2.0006
-    0.7994   -0.7994   2.2006
-    0.5993   -0.5993   2.4007
-    0.3993   -0.3993   2.6007
-    0.1993   -0.1993   2.8007
+    ```python
+    # duration of tick 
+    _tick_duration = _timebase.numer / _timebase.denom
+    
+    def getTime():
+        return (_mach_absolute_time() * _tick_duration) / 1.0e9
     ```
-
-    Issue is the definition of `getTime()` in `clock.py` for macOS, which doesn't work on Apple Silicon.
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
