@@ -228,6 +228,8 @@ python setup.py install
         return (_mach_absolute_time() * _tick_duration) / 1.0e9
     ```
 
+    The `Benchmark wizard` now works as well as `timeByFramesEx.py`.
+
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
 ```sh
