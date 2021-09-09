@@ -194,6 +194,13 @@ python setup.py install
 
 - Playing mp4 movies is not working.
 
+    Error:
+
+    ```txt
+    MemoryError: Cannot allocate write+execute memory for ffi.callback(). You might be running on a system that prevents this. For more information, see https://cffi.readthedocs.io/en/latest/using.html#callbacks
+    Fatal Python error: pygame_parachute: (pygame parachute) Segmentation Fault
+    ```
+
 - `clocksAndTimers.py` not working as expected.
 
     Issue is the definition of `getTime()` in `clock.py`, which doesn't work properly on Apple Silicon.
