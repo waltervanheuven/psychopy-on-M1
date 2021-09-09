@@ -216,7 +216,9 @@ python setup.py install
     2.9988   -2.9988   0.0012
     ```
 
-    The follow change fixes the timer issue:
+    `_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the tick duration. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
+
+    The follow change fixes I think the timer issue:
 
     ```python
     # duration of tick 
