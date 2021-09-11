@@ -82,7 +82,7 @@ pip install tables
 pip install pyo
 ```
 
-Installation succesful. However, error in PsychoPy when using pyo!
+Installation succesful. However, error in PsychoPy when using `pyo`!
 
 ```txt
 Pyo error: Pyo built without Coreaudio support
@@ -90,11 +90,13 @@ Pyo error: Pyo built without Coreaudio support
 
 Solution is to build `pyo` from source.
 
-Uninstall pyo
+Uninstall `pyo`.
 
 ```sh
 pip uninstall pyo
 ```
+
+Install `pyo` library from source.
 
 ```sh
 brew install liblo libsndfile portaudio portmidi
@@ -203,21 +205,12 @@ python setup.py install
 
 ## Issues
 
-- Audio issues. Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` is the solution. Audio of mp4 movies are working.
+- Audio issues. Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` works!
 
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
     Issue with importing PsychHID. `psychtoolbox` import fails.
-
-- Playing mp4 movies is not working.
-
-    Error:
-
-    ```txt
-    MemoryError: Cannot allocate write+execute memory for ffi.callback(). You might be running on a system that prevents this. For more information, see https://cffi.readthedocs.io/en/latest/using.html#callbacks
-    Fatal Python error: pygame_parachute: (pygame parachute) Segmentation Fault
-    ```
 
 - `clocksAndTimers.py` not working as expected.
 
@@ -260,3 +253,5 @@ If PsychoPy fails to start up after you have changed the preferences, remove the
 ```sh
 rm ~/.psychopy3/userPrefs.cfg
 ```
+
+After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works! Tested several PsychoPy experiments, and so far things seem to work well.
