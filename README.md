@@ -82,6 +82,45 @@ pip install tables
 pip install pyo
 ```
 
+Installation succesful. However, error in PsychoPy when using pyo!
+
+```txt
+Pyo error: Pyo built without Coreaudio support
+```
+
+Solution is to build `pyo` from source.
+
+Uninstall pyo
+
+```sh
+pip uninstall pyo
+```
+
+```sh
+brew install liblo libsndfile portaudio portmidi
+git clone https://github.com/belangeo/pyo.git
+cd pyo
+python setup.py install --use-coreaudio --use-double
+```
+
+Error:
+
+```txt
+src/engine/ad_coreaudio.c:132:21: error: implicit declaration of function 'AudioGetCurrentHostTime' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+```
+
+Add the following line to the file `include/ad_coreaudio.h` after line 24 to fix the issue:
+
+```txt
+#include <CoreAudio/HostTime.h>
+```
+
+After fixing the missing header file install pyo again.
+
+```sh
+python setup.py install --use-coreaudio --use-double
+```
+
 ## Install Psychtoolbox
 
 - Download [psychtoolbox from pypi] (<https://pypi.org/project/psychtoolbox/3.0.17.8/>). Download `psychtoolbox-3.0.17.8.zip`
