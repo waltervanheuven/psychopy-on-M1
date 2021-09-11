@@ -80,6 +80,8 @@ export BZIP2_DIR=/opt/homebrew/opt/bzip2
 pip install tables
 ```
 
+Note: `opt` folder of homebrew for Apple Silicon is located in `/opt/homebrew/`. On Intel macs it is located in `/usr/local/`.
+
 ## Install pyo
 
 ```sh
@@ -170,7 +172,7 @@ pip install SpeechRecognition pyfilesec
 
 ## Install Psychopy
 
-Installing PsychoPy and other dependencies.
+Installing PsychoPy and remaining dependencies.
 
 ```sh
 pip install psychopy
