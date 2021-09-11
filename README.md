@@ -30,6 +30,10 @@ Activate the virtual environment.
 
 ```sh
 source ~/venv/psychopy/bin/activate
+
+# update pip setuptools wheel
+``` sh
+pip install --upgrade pip setuptools wheel
 ```
 
 ## Install numpy
