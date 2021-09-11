@@ -79,28 +79,7 @@ pip install tables
 ## Install pyo
 
 ```sh
-brew install liblo libsndfile portaudio portmidi
-git clone https://github.com/belangeo/pyo.git
-cd pyo
-python setup.py install --use-coreaudio --use-double
-```
-
-Error:
-
-```txt
-src/engine/ad_coreaudio.c:132:21: error: implicit declaration of function 'AudioGetCurrentHostTime' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-```
-
-Add the following line to the file `include/ad_coreaudio.h` after line 24 to fix the issue:
-
-```txt
-#include <CoreAudio/HostTime.h>
-```
-
-After fixing the missing header file install pyo again.
-
-```sh
-python setup.py install --use-coreaudio --use-double
+pip install pyo
 ```
 
 ## Install Psychtoolbox
