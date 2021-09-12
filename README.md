@@ -72,10 +72,10 @@ pip install pygame
 
 ```sh
 brew install hdf5 c-blosc lzo bzip2
-export HDF5_DIR=/opt/homebrew/opt/hdf5
-export BLOSC_DIR=/opt/homebrew/opt/c-blosc
-export LZO_DIR=/opt/homebrew/opt/lzo
-export BZIP2_DIR=/opt/homebrew/opt/bzip2
+export HDF5_DIR=$(brew --prefix hdf5)
+export BLOSC_DIR=$(brew --prefix c-blosc)
+export LZO_DIR=$(brew --prefix lzo)
+export BZIP2_DIR=$(brew --prefix bzip2)
 
 pip install tables
 ```
@@ -153,7 +153,7 @@ However, importing `psychtoolbox` in Python fails at the moment due to ImportErr
 ## Install wxPython
 
 ```sh
-export CXXFLAGS=-I/opt/homebrew/include
+export CFLAGS=-I/$(brew --prefix)/include
 pip install wxPython
 ```
 
