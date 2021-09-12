@@ -183,6 +183,8 @@ psychopy
 
 PsychoPy starts up and some things work (see below for issues). One of the issues is that `core.wait()` is not working properly. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
 
+Next move to source folder and uninstall psychopy.
+
 ```sh
 # move to source folder
 cd psychopy-release
@@ -213,7 +215,7 @@ down       up          clock
 
 `_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the scaling factor. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
 
-The follow change fixes the timer issue (change lines 91-94):
+The follow change fixes `getTime()` (change lines 91-94):
 
 ```python
 # scaling factor
@@ -223,7 +225,7 @@ def getTime():
     return (_mach_absolute_time() * _scaling_factor) / 1.0e9
 ```
 
-Also Change also lines 56-60 to:
+Also change lines 56-60 to:
 
 ```python
 import platform
@@ -237,7 +239,7 @@ else:
         havePTB = False
 ```
 
-The above code prevents that PTB (psychtoolbox) is used for timing on arm processors.
+The above code prevents that PTB (`psychtoolbox`) is used for timing on arm processors.
 
 After changing `clock.py`, install psychopy again.
 
@@ -246,6 +248,45 @@ python setup.py install
 ```
 
 The `Benchmark wizard` now works (`Report: All values seem reasonable (no warnings, but there might still be room for improvement)`) as well as `timeByFramesEx.py`.
+
+Correct output `clocksAndTimers.py` demo:
+
+```txt
+down       up          clock
+3.0000   -3.0000   0.0000
+2.8000   -2.8000   0.2000
+2.5999   -2.5999   0.4001
+2.3999   -2.3999   0.6001
+2.1999   -2.1999   0.8001
+1.9999   -1.9999   1.0001
+1.7999   -1.7999   1.2001
+1.5998   -1.5998   1.4002
+1.3998   -1.3998   1.6002
+1.1998   -1.1998   1.8002
+0.9998   -0.9998   2.0002
+0.7998   -0.7998   2.2002
+0.5998   -0.5998   2.4003
+0.3997   -0.3997   2.6003
+0.1997   -0.1997   2.8003
+
+down          clock
+2.9997   3.0003
+2.7997   3.2003
+2.5997   3.4003
+2.3997   3.6003
+2.1997   3.8003
+1.9997   4.0003
+1.7997   4.2003
+1.5997   4.4003
+1.3997   4.6003
+1.1997   4.8003
+0.9997   5.0003
+0.7997   5.2003
+0.5997   5.4003
+0.3997   5.6003
+0.1997   5.8003
+The last run should have been precise sub-millisecond
+```
 
 ## Other issues with fixes
 
