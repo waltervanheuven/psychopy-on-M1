@@ -241,7 +241,7 @@ else:
 
 The above code prevents that PTB (`psychtoolbox`) is used for timing on arm processors.
 
-After changing `clock.py`, install psychopy again.
+After making the above changes in `clock.py`, install psychopy again.
 
 ```sh
 python setup.py install
