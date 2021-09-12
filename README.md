@@ -131,8 +131,8 @@ python setup.py install --use-coreaudio --use-double
 
 ## Install Psychtoolbox
 
-- Download [psychtoolbox from pypi] (<https://pypi.org/project/psychtoolbox/3.0.17.8/>). Download `psychtoolbox-3.0.17.8.zip`
-- Download: [ptb-wheels source] (<https://github.com/aforren1/ptb-wheels>)
+- Download [psychtoolbox from pypi](https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
+- Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
 
 From folder `ptb-wheels-master`:
 
