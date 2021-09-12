@@ -1,6 +1,6 @@
 # PsychoPy v2021.2.3 on M1 Mac (Apple Silicon)
 
-The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install an Apple Silicon native version of PsychoPy on an M1 Mac using `pip install psychopy`.
+The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon version of PsychoPy on an M1 Mac using `pip install psychopy`.
 
 ## Install Python for M1 Macs
 
