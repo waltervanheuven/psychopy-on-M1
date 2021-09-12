@@ -181,7 +181,7 @@ pip install psychopy
 psychopy
 ```
 
-PsychoPy starts up and some things work (see below for issues). One of the issues is that `core.wait()` is not working. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
+PsychoPy starts up and some things work (see below for issues). One of the issues is that `core.wait()` is not working properly. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
 
 ```sh
 # move to source folder
@@ -191,68 +191,70 @@ cd psychopy-release
 pip uninstall psychopy
 ```
 
-There are issues with pyglet in the function `core.wait()`. A hack that works is to set the hogCPUperoid to zero.
+Issue is the definition of `getTime()` in `clock.py`, which doesn't work properly on Apple Silicon.
+Because `psychtoolbox` import fails, `getTime()` is defined based on the `darwin` specific code in `clock.py`.
 
-In the file `build/lib/psychopy/clock.py` add a line to function `wait` (function starts at line 291):
+Output `clocksAndTimers.py` demo:
 
-```python
-    from . import core
-
-    hogCPUperiod = 0
+```txt
+down       up          clock
+3.0000   -3.0000   0.0000
+2.9999   -2.9999   0.0001
+2.9998   -2.9998   0.0002
+2.9996   -2.9996   0.0004
+2.9995   -2.9995   0.0005
+2.9994   -2.9994   0.0006
+2.9993   -2.9993   0.0007
+2.9992   -2.9992   0.0008
+2.9991   -2.9991   0.0009
+2.9989   -2.9989   0.0011
+2.9988   -2.9988   0.0012
 ```
 
-Reason for the `core.wait()` problem is related to macOS code for `getTime()` in `clock.py` (info and fix can be found below).
+`_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the scaling factor. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
 
-Install psychopy
+The follow change fixes the timer issue (change lines 91-94):
+
+```python
+# scaling factor
+_scaling_factor = _timebase.numer / _timebase.denom
+
+def getTime():
+    return (_mach_absolute_time() * _scaling_factor) / 1.0e9
+```
+
+Also Change also lines 56-60 to:
+
+```python
+import platform
+if platform.processor() == 'arm':
+    havePTB = False
+else:
+    try:
+        import psychtoolbox
+        havePTB = True
+    except ImportError:
+        havePTB = False
+```
+
+The above code prevents that PTB (psychtoolbox) is used for timing on arm processors.
+
+After changing `clock.py`, install psychopy again.
 
 ```sh
 python setup.py install
 ```
 
-## Issues
+The `Benchmark wizard` now works (`Report: All values seem reasonable (no warnings, but there might still be room for improvement)`) as well as `timeByFramesEx.py`.
+
+## Other issues with fixes
 
 - Audio issues. Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` works!
 
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
-    Issue with importing PsychHID. `psychtoolbox` import fails.
-
-- `clocksAndTimers.py` not working as expected.
-
-    Issue is the definition of `getTime()` in `clock.py`, which doesn't work properly on Apple Silicon.
-    Because `psychtoolbox` import fails, `getTime()` is defined based on the `darwin` specific code in `clock.py`.
-
-    Output
-
-    ```txt
-    down       up          clock
-    3.0000   -3.0000   0.0000
-    2.9999   -2.9999   0.0001
-    2.9998   -2.9998   0.0002
-    2.9996   -2.9996   0.0004
-    2.9995   -2.9995   0.0005
-    2.9994   -2.9994   0.0006
-    2.9993   -2.9993   0.0007
-    2.9992   -2.9992   0.0008
-    2.9991   -2.9991   0.0009
-    2.9989   -2.9989   0.0011
-    2.9988   -2.9988   0.0012
-    ```
-
-    `_timebase.numer` and `_timebase.denom` are 1 on Intel but on Apple Silicon these values are not 1. `_timebase.numer / _timebase.denom` indicates the scaling factor. More info [here](https://eclecticlight.co/2020/11/27/inside-m1-macs-time-and-logs/).
-
-    The follow change fixes I think the timer issue:
-
-    ```python
-    # scaling factor
-    _scaling_factor = _timebase.numer / _timebase.denom
-    
-    def getTime():
-        return (_mach_absolute_time() * _scaling_factor) / 1.0e9
-    ```
-
-    The `Benchmark wizard` now works (`Report: All values seem reasonable (no warnings, but there might still be room for improvement)`) as well as `timeByFramesEx.py`.
+    Issue with importing PsychHID. `psychtoolbox` import fails. 
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
