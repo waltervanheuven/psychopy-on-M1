@@ -295,7 +295,11 @@ The last run should have been precise sub-millisecond
 - Psychtoolbox issues:
     `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
 
-    Issue with importing PsychHID. `psychtoolbox` import fails. 
+    Issue with importing PsychHID. `psychtoolbox` import fails.
+
+- `System info...` in Help menu fails
+
+    Error is due to a bug in psutil: [psutil.cpu_freq() broken on Apple M1](https://github.com/giampaolo/psutil/issues/1892).
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
