@@ -1,8 +1,8 @@
 # PsychoPy v2021.2.3 on M1 Mac (Apple Silicon)
 
-The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon version of PsychoPy on an M1 Mac using `pip install psychopy`.
+The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon (arm64) version of PsychoPy on an M1 Mac using `pip install psychopy`.
 
-## Install Python for M1 Macs
+## 1. Install native Python for M1 Macs
 
 Use [brew](https://brew.sh) to install latest version of Python for M1 Macs.
 
@@ -12,7 +12,7 @@ brew install python3
 
 Python 3.9.7 (3 September 2021).
 
-## Install QT5
+## 2. Install QT5
 
 Install QT5 using brew. Requires venv with system-site-packages to work in Python.
 
@@ -20,7 +20,7 @@ Install QT5 using brew. Requires venv with system-site-packages to work in Pytho
 brew install pyqt5
 ```
 
-## Create virtual environment with system-site-packages
+## 3. Create virtual environment with system-site-packages
 
 ```sh
 python3 -m venv --system-site-packages ~/venv/psychopy
@@ -36,13 +36,13 @@ source ~/venv/psychopy/bin/activate
 pip install --upgrade pip setuptools wheel
 ```
 
-## Install numpy
+## 4. Install numpy
 
 ```sh
 pip install numpy
 ```
 
-## Install scipy
+## 5. Install scipy
 
 ```sh
 brew install openblas
@@ -55,20 +55,20 @@ pip install Cython pybind11 pythran
 pip install --no-use-pep517 scipy
 ```
 
-## Install pygame
+## 6. Install pygame
 
 ```sh
-brew install mercurial
-brew install sdl sdl\_image sdl\_mixer sdl\_ttf portmidi
-brew install smpeg
-brew install sdl2
+brew install pkg-config
+#brew install sdl sdl\_image sdl\_mixer sdl\_net sdl\_ttf smpeg
+brew install sdl2 sdl2_image sdl2_mixer sdl2_net sdl2_ttf smpeg
+brew install portmidi
 ```
 
 ```sh
 pip install pygame
 ```
 
-## Install tables
+## 7. Install tables
 
 ```sh
 brew install hdf5 c-blosc lzo bzip2
@@ -81,8 +81,9 @@ pip install tables
 ```
 
 Note: `opt` folder of homebrew for Apple Silicon is located in `/opt/homebrew/`. On Intel macs it is located in `/usr/local/`.
+To find correct path use brew: `$(brew --prefix ....)`.
 
-## Install pyo
+## 8. Install pyo
 
 ```sh
 pip install pyo
@@ -129,7 +130,7 @@ After fixing the missing header file install pyo again.
 python setup.py install --use-coreaudio --use-double
 ```
 
-## Install Psychtoolbox
+## 9. Install Psychtoolbox
 
 - Download [psychtoolbox from pypi](https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
 - Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
@@ -150,27 +151,27 @@ pip list
 
 However, importing `psychtoolbox` in Python fails at the moment due to ImportError (`from .PsychHID import PsychHID` fails).
 
-## Install wxPython
+## 10. Install wxPython
 
 ```sh
 export CFLAGS=-I/$(brew --prefix)/include
 pip install wxPython
 ```
 
-## Install ffmpeg
+## 11. Install ffmpeg
 
 ```sh
-## needed for mp4
+## needed for mp4 videos
 brew install ffmpeg
 ```
 
-## Install other libraries (not in requirements.txt but needed for some demos)
+## 12. Install other libraries (not in requirements.txt but needed for some demos)
 
 ```sh
 pip install SpeechRecognition pyfilesec
 ```
 
-## Install Psychopy
+## 13. Install Psychopy
 
 Installing PsychoPy and remaining dependencies.
 
@@ -229,7 +230,7 @@ Also change lines 56-60 to:
 
 ```python
 import platform
-if platform.processor() == 'arm':
+if platform.processor() == 'arm' and sys.platform == 'darwin':
     havePTB = False
 else:
     try:
@@ -290,12 +291,17 @@ The last run should have been precise sub-millisecond
 
 ## Other issues with fixes
 
-- Audio issues. Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` works!
+- Audio issues
 
-- Psychtoolbox issues:
-    `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`
+    Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` works!
 
-    Issue with importing PsychHID. `psychtoolbox` import fails.
+- Audio capture not working
+
+    The 'psychtoolbox' library cannot be loaded but is required for audio capture.
+
+- Psychtoolbox is not imported
+
+    Import Error: dlopen(/Users/waltervh/venv/psychopy/lib/python3.9/site-packages/psychtoolbox-3.0.17.11-py3.9-macosx-11-arm64.egg/psychtoolbox/PsychHID.cpython-39-darwin.so, 2). `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`.
 
 - `System info...` in Help menu fails
 
