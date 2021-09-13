@@ -301,11 +301,15 @@ The last run should have been precise sub-millisecond
 
 - Psychtoolbox is not imported
 
-    Import Error: dlopen(/Users/waltervh/venv/psychopy/lib/python3.9/site-packages/psychtoolbox-3.0.17.11-py3.9-macosx-11-arm64.egg/psychtoolbox/PsychHID.cpython-39-darwin.so, 2). `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`.
+  Import Error: dlopen(/Users/waltervh/venv/psychopy/lib/python3.9/site-packages/psychtoolbox-3.0.17.11-py3.9-macosx-11-arm64.egg/psychtoolbox/PsychHID.cpython-39-darwin.so, 2). `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`.
 
 - `System info...` in Help menu fails
 
-    Error is due to a bug in psutil: [psutil.cpu_freq() broken on Apple M1](https://github.com/giampaolo/psutil/issues/1892).
+  Error is due to a bug in psutil: [psutil.cpu_freq() broken on Apple M1](https://github.com/giampaolo/psutil/issues/1892).
+
+- Drivers for Apple Silicon Macs
+
+  - USB driver for Cedrus response box/Stimtracker [download D2XX direct driver](https://ftdichip.com/drivers/d2xx-drivers/)
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
@@ -313,4 +317,6 @@ If PsychoPy fails to start up after you have changed the preferences, remove the
 rm ~/.psychopy3/userPrefs.cfg
 ```
 
-After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works! Tested several PsychoPy experiments, and so far things seem to work well.
+## Status
+
+After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works! Tested several PsychoPy experiments, and so far things seem to work.
