@@ -309,7 +309,7 @@ The last run should have been precise sub-millisecond
 
 - Drivers for Apple Silicon Macs
 
-  - USB driver for Cedrus response box/Stimtracker [download D2XX direct driver](https://ftdichip.com/drivers/d2xx-drivers/)
+  - USB driver for Cedrus response box/Stimtracker (ARM) [download D2XX direct driver](https://ftdichip.com/drivers/d2xx-drivers/)
 
 If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
 
