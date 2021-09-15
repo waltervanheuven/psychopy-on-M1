@@ -132,15 +132,46 @@ python setup.py install --use-coreaudio --use-double
 
 ## 9. Install Psychtoolbox
 
-- Download [psychtoolbox from pypi](https://pypi.org/project/psychtoolbox/3.0.17.8/). Download `psychtoolbox-3.0.17.8.zip`
-- Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
+`pip install psychtoolbox` is successful but importing the library fails.
+
+Following fix is not yet working!
+
+Download the psychtoolbox source (`psychtoolbox-3.0.17.8.zip`) from [psychtoolbox from pypi](https://pypi.org/project/psychtoolbox/3.0.17.8/).
+
+Installation from source fails because two libraries are missing:
+
+- `libportaudio_osx_64.a`
+- `libHID_Utilities64.a`
+
+### Create `libportaudio_osx_64.a`
+
+Download `portaudio` source from [portaudio] (). Build `portaudio` and extract arm64 library (more info [here](http://files.portaudio.com/docs/v19-doxydocs/compile_mac_coreaudio.html) ).
+
+```sh
+cd portaudio
+
+# buid
+./configure && make
+
+# extract arm64 library and save as `libportaudio_osx_64.a` (name used in psychtoolbox)
+lipo lib/.libs/libportaudio.a -extract arm64 -output libportaudio_osx_64.a
+```
+
+Next copy `libportaudio_osx_64.a` in folder `portaudio` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/PortAudio/`.
+
+### Create `libHID_Utilities64.a`
+
+This requires building the library from psychtoolbox with Xcode. Xcode project in the source folder of psychtoolbox need to be updated for the latest version of Xcode. Work in progress.
+
+A hack to get the source install of psychtoolbox working is to copy the library file from the wheel (which is for Intel macs). Source code install will work but importing the toolbox will fail.
+
+Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
 
 From folder `ptb-wheels-master`:
 
-- Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/Cohorts/PortAudio/libportaudio_osx_64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/PortAudio/`
-- Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
+Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
 
-In folder `psychtoolbox-3.0.17.8` type:
+### Install psychtoolbox
 
 ```sh
 python setup.py install
@@ -148,8 +179,6 @@ python setup.py install
 # check if psychtoolbox is successfully installed
 pip list
 ```
-
-However, importing `psychtoolbox` in Python fails at the moment due to ImportError (`from .PsychHID import PsychHID` fails).
 
 ## 10. Install wxPython
 
