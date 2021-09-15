@@ -165,9 +165,17 @@ pip install wxPython
 brew install ffmpeg
 ```
 
-## 12. Install other libraries (not in requirements.txt but needed for some demos)
+## 12. Install other libraries
 
 ```sh
+pip install pyosf
+pip install seaborn
+pip install psychopy_ext
+pip install python-bidi
+pip install pyserial pyparallel
+pip install egi
+#pip install iolabs # fails to install, source install also fails
+pip install pyxid
 pip install SpeechRecognition pyfilesec
 ```
 
