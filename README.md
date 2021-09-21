@@ -206,6 +206,7 @@ pip install egi
 #pip install iolabs # fails to install, source install also fails
 pip install pyxid
 pip install SpeechRecognition pyfilesec
+pip install pytest sphinx labjack
 ```
 
 ## 13. Install Psychopy
