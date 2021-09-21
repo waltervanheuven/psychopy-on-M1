@@ -340,6 +340,8 @@ The last run should have been precise sub-millisecond
 
   Import Error: dlopen(/Users/waltervh/venv/psychopy/lib/python3.9/site-packages/psychtoolbox-3.0.17.11-py3.9-macosx-11-arm64.egg/psychtoolbox/PsychHID.cpython-39-darwin.so, 2). `Symbol not found: _AllocateHIDObjectFromIOHIDDeviceRef`.
 
+  Event module is therefore used for the keyboard component.
+
 - `System info...` in Help menu fails
 
   Error is due to a bug in psutil: [psutil.cpu_freq() broken on Apple M1](https://github.com/giampaolo/psutil/issues/1892).
@@ -357,3 +359,34 @@ rm ~/.psychopy3/userPrefs.cfg
 ## Status
 
 After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works! Tested several PsychoPy experiments, and so far things seem to work.
+
+Benchmark wizard report (M1 MacBook Pro, macOS 11.6)
+
+|                                       |                                           |
+|:------------------------------------- | :-----------------------------------------|
+| **PsychoPy**                          |                                           |
+| PsychoPy                              | 2021.2.3                                  |
+| locale                                | None.UTF-8                                |
+| python version                        | 3.9.7  (64bit)                            |
+| wx                                    | 4.1.1 osx-cocoa (phoenix) wxWidgets 3.1.5 |
+| pyglet                                | 1.5.21                                    |
+| rush                                  | True                                      |
+| **Visual**                            |                                           |
+| openGL version                        | 2.1 Metal 71.7.1                          |
+| openGL vendor                         | Apple                                     |
+| screen size                           | 2880 x 1800                               |
+| have shaders                          | True                                      |
+| visual sync (refresh)                 | 16.64 ms                                  |
+| refresh stability (SD)                | 0.32 ms                                   |
+| no dropped frames                     | 0 / 180                                   |
+| openGL max vertices                   | 1048575                                   |
+| GL_ARB_multitexture                   | True                                      |
+| GL_EXT_framebuffer_object             | True                                      |
+| GL_ARB_fragment_program               | True                                      |
+| GL_ARB_shader_objects                 | True                                      |
+| GL_ARB_vertex_shader                  | True                                      |
+| GL_ARB_texture_float                  | True                                      |
+| GL_ARB_texture_non_power_of_two       | True                                      |
+| **System**                            |                                           |
+| platform                              | darwin 11.6 arm64                         |
+| CPU speed test                        | 0.003 s                                   |
