@@ -32,11 +32,13 @@ Activate the virtual environment.
 source ~/venv/psychopy/bin/activate
 
 # update pip setuptools wheel
-``` sh
+
 pip install --upgrade pip setuptools wheel
 ```
 
 ## 4. Install numpy
+
+numpy version: 1.21.1
 
 ```sh
 pip install numpy
@@ -48,6 +50,8 @@ pip install numpy
 brew install openblas
 ```
 
+scipy version: 1.7.1
+
 ```sh
 export OPENBLAS=$(brew --prefix openblas)
 export CFLAGS="-falign-functions=8 ${CFLAGS}"
@@ -55,7 +59,12 @@ pip install Cython pybind11 pythran
 pip install --no-use-pep517 scipy
 ```
 
+Note: `opt` folder of homebrew for Apple Silicon is located in `/opt/homebrew/`. On Intel macs it is located in `/usr/local/`.
+To find correct path use brew: `$(brew --prefix ....)`.
+
 ## 6. Install pygame
+
+pygame version: 2.0.2
 
 ```sh
 brew install pkg-config
@@ -69,6 +78,8 @@ pip install pygame
 ```
 
 ## 7. Install tables
+
+Current version: 3.6.1
 
 ```sh
 brew install hdf5 c-blosc lzo bzip2
@@ -85,11 +96,9 @@ To find correct path use brew: `$(brew --prefix ....)`.
 
 ## 8. Install pyo
 
-```sh
-pip install pyo
-```
+pyo version: 1.0.4
 
-Installation succesful. However, error in PsychoPy when using `pyo`!
+Installation with `pip install pyo` is successful. However, error in PsychoPy when using `pyo`!
 
 ```txt
 Pyo error: Pyo built without Coreaudio support
@@ -97,13 +106,7 @@ Pyo error: Pyo built without Coreaudio support
 
 Solution is to build `pyo` from source.
 
-Uninstall `pyo`.
-
-```sh
-pip uninstall pyo
-```
-
-Install `pyo` library from source.
+### Install `pyo` library from source.
 
 ```sh
 brew install liblo libsndfile portaudio portmidi
@@ -132,20 +135,17 @@ python setup.py install --use-coreaudio --use-double
 
 ## 9. Install Psychtoolbox
 
-`pip install psychtoolbox` is successful but importing the library fails.
+psychtoolbox version: 3.0.18.0
 
-Following fix is not yet working!
+Installation with `pip install psychtoolbox` fails.
 
-Download the psychtoolbox source (`psychtoolbox-3.0.17.8.zip`) from [psychtoolbox from pypi](https://pypi.org/project/psychtoolbox/3.0.17.8/).
-
-Installation from source fails because two libraries are missing:
-
-- `libportaudio_osx_64.a`
-- `libHID_Utilities64.a`
+```txt
+clang: error: no such file or directory: 'PsychSourceGL/Cohorts/PortAudio/libportaudio_osx_64.a'
+```
 
 ### Create `libportaudio_osx_64.a`
 
-Download `portaudio` source from [portaudio] (). Build `portaudio` and extract arm64 library (more info [here](http://files.portaudio.com/docs/v19-doxydocs/compile_mac_coreaudio.html) ).
+Download portaudio source from [portaudio] (). Build portaudio and extract arm64 library (more info [here](http://files.portaudio.com/docs/v19-doxydocs/compile_mac_coreaudio.html)).
 
 ```sh
 cd portaudio
@@ -157,7 +157,7 @@ cd portaudio
 lipo lib/.libs/libportaudio.a -extract arm64 -output libportaudio_osx_64.a
 ```
 
-Next copy `libportaudio_osx_64.a` in folder `portaudio` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/PortAudio/`.
+Next, copy `libportaudio_osx_64.a` in folder `portaudio` to `psychtoolbox-3.0.18.0/PsychSourceGL/Cohorts/PortAudio/` (replace existing Intel version).
 
 ### Create `libHID_Utilities64.a`
 
@@ -167,13 +167,13 @@ A hack to get the source install of psychtoolbox working is to copy the library 
 
 Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
 
-From folder `ptb-wheels-master`:
+Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.18.0/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
 
-Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.17.8/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
-
-### Install psychtoolbox
+### Install Psychtoolbox from source
 
 ```sh
+cd Psychtoolbox-3-3.0.18.0
+
 python setup.py install
 
 # check if psychtoolbox is successfully installed
@@ -182,8 +182,11 @@ pip list
 
 ## 10. Install wxPython
 
+wxPython version: 4.1.1
+
 ```sh
 export CFLAGS=-I/$(brew --prefix)/include
+export CXXFLAGS=-I/$(brew --prefix)/include
 pip install wxPython
 ```
 
