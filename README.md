@@ -171,7 +171,7 @@ pip install psychopy_ext
 pip install python-bidi
 pip install pyserial pyparallel
 pip install egi
-#pip install iolabs # fails to install, source install also fails
+pip install iolabs
 pip install pyxid
 pip install SpeechRecognition pyfilesec
 pip install pytest sphinx labjack
