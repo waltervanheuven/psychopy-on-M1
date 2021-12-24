@@ -147,7 +147,7 @@ python setup.py install
 
 ## 10. Install wxPython
 
-wxPython version: 4.1.1
+[wxPython](https://www.wxpython.org) version: 4.1.1
 
 ```sh
 export CFLAGS=-I/$(brew --prefix)/include
