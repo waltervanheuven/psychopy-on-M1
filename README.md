@@ -1,6 +1,6 @@
-# PsychoPy v2021.2.3 on M1 Mac (Apple Silicon)
+# PsychoPy v2021.2.3 on an M1 Mac (Apple Silicon)
 
-The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon (arm64) version of PsychoPy on an M1 Mac using `pip install psychopy`.
+The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon (arm64) version of PsychoPy on an M1 MacBook Pro running macOS Monterey 12.1. 
 
 ## 1. Install native Python for M1 Macs
 
@@ -10,7 +10,7 @@ Use [brew](https://brew.sh) to install latest version of Python for M1 Macs.
 brew install python3
 ```
 
-Python 3.9.7 (3 September 2021).
+Python 3.9.9 (21 November 2021).
 
 ## 2. Install QT5
 
@@ -38,7 +38,7 @@ pip install --upgrade pip setuptools wheel
 
 ## 4. Install numpy
 
-numpy version: 1.21.1
+numpy version: 1.21.5
 
 ```sh
 pip install numpy
@@ -50,7 +50,7 @@ pip install numpy
 brew install openblas
 ```
 
-scipy version: 1.7.1
+scipy version: 1.7.3
 
 ```sh
 export OPENBLAS=$(brew --prefix openblas)
@@ -64,7 +64,7 @@ To find correct path use brew: `$(brew --prefix ....)`.
 
 ## 6. Install pygame
 
-pygame version: 2.0.2
+pygame version: 2.1.0
 
 ```sh
 brew install pkg-config
@@ -106,7 +106,7 @@ Pyo error: Pyo built without Coreaudio support
 
 Solution is to build `pyo` from source.
 
-### Install `pyo` library from source.
+### Install `pyo` library from source
 
 ```sh
 brew install liblo libsndfile portaudio portmidi
@@ -133,51 +133,16 @@ After fixing the missing header file install pyo again.
 python setup.py install --use-coreaudio --use-double
 ```
 
-## 9. Install Psychtoolbox
+## 9. Install Psychtoolbox from source
 
-psychtoolbox version: 3.0.18.0
+psychtoolbox version: 3.0.18.2
 
-Installation with `pip install psychtoolbox` fails.
-
-```txt
-clang: error: no such file or directory: 'PsychSourceGL/Cohorts/PortAudio/libportaudio_osx_64.a'
-```
-
-### Create `libportaudio_osx_64.a`
-
-Download portaudio source from [portaudio] (). Build portaudio and extract arm64 library (more info [here](http://files.portaudio.com/docs/v19-doxydocs/compile_mac_coreaudio.html)).
+Download [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/tree/3.0.18.2).
 
 ```sh
-cd portaudio
-
-# buid
-./configure && make
-
-# extract arm64 library and save as `libportaudio_osx_64.a` (name used in psychtoolbox)
-lipo lib/.libs/libportaudio.a -extract arm64 -output libportaudio_osx_64.a
-```
-
-Next, copy `libportaudio_osx_64.a` in folder `portaudio` to `psychtoolbox-3.0.18.0/PsychSourceGL/Cohorts/PortAudio/` (replace existing Intel version).
-
-### Create `libHID_Utilities64.a`
-
-This requires building the library from psychtoolbox with Xcode. Xcode project in the source folder of psychtoolbox need to be updated for the latest version of Xcode. Work in progress.
-
-A hack to get the source install of psychtoolbox working is to copy the library file from the wheel (which is for Intel macs). Source code install will work but importing the toolbox will fail.
-
-Download: [ptb-wheels source](https://github.com/aforren1/ptb-wheels)
-
-Copy file `ptb-wheels-master/psychtoolbox-3/PsychSourceGL/HID_Utilities_64Bit/build/Release/libHID_Utilities64.a` to `psychtoolbox-3.0.18.0/PsychSourceGL/Cohorts/HID_Utilities_64Bit/build/Release/`
-
-### Install Psychtoolbox from source
-
-```sh
-cd Psychtoolbox-3-3.0.18.0
+cd Psychtoolbox-3-3.0.18.2
 
 python setup.py install
-
-# check if psychtoolbox is successfully installed
-pip list
 ```
 
 ## 10. Install wxPython
@@ -223,7 +188,7 @@ pip install psychopy
 psychopy
 ```
 
-PsychoPy starts up and some things work (see below for issues). One of the issues is that `core.wait()` is not working properly. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
+PsychoPy starts up but timings do not work. One of the issues is that `core.wait()` is not working properly. To fix this download the [PsychoPy source](https://github.com/psychopy/psychopy).
 
 Next move to source folder and uninstall psychopy.
 
@@ -354,7 +319,7 @@ The last run should have been precise sub-millisecond
 
   - USB driver for Cedrus response box/Stimtracker (ARM) [download D2XX direct driver](https://ftdichip.com/drivers/d2xx-drivers/)
 
-If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`
+If PsychoPy fails to start up after you have changed the preferences, remove the file `userPrefs.cfg`.
 
 ```sh
 rm ~/.psychopy3/userPrefs.cfg
@@ -362,26 +327,26 @@ rm ~/.psychopy3/userPrefs.cfg
 
 ## Status
 
-After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works! Tested several PsychoPy experiments, and so far things seem to work.
+After fixing `getTime()` and installing `pyo` from source (with fix), playing movies and audio works!
 
-Benchmark wizard report (M1 MacBook Pro, macOS 11.6)
+Benchmark wizard report (M1 MacBook Pro, macOS 12.1). Screen size is incorrect (should be 2560 x 1600).
 
 |                                       |                                           |
 |:------------------------------------- | :-----------------------------------------|
 | **PsychoPy**                          |                                           |
 | PsychoPy                              | 2021.2.3                                  |
 | locale                                | None.UTF-8                                |
-| python version                        | 3.9.7  (64bit)                            |
+| python version                        | 3.9.9  (64bit)                            |
 | wx                                    | 4.1.1 osx-cocoa (phoenix) wxWidgets 3.1.5 |
 | pyglet                                | 1.5.21                                    |
 | rush                                  | True                                      |
 | **Visual**                            |                                           |
-| openGL version                        | 2.1 Metal 71.7.1                          |
+| openGL version                        | 2.1 Metal 76.3                            |
 | openGL vendor                         | Apple                                     |
 | screen size                           | 2880 x 1800                               |
 | have shaders                          | True                                      |
-| visual sync (refresh)                 | 16.64 ms                                  |
-| refresh stability (SD)                | 0.32 ms                                   |
+| visual sync (refresh)                 | 16.69 ms                                  |
+| refresh stability (SD)                | 0.55 ms                                   |
 | no dropped frames                     | 0 / 180                                   |
 | openGL max vertices                   | 1048575                                   |
 | GL_ARB_multitexture                   | True                                      |
@@ -392,5 +357,5 @@ Benchmark wizard report (M1 MacBook Pro, macOS 11.6)
 | GL_ARB_texture_float                  | True                                      |
 | GL_ARB_texture_non_power_of_two       | True                                      |
 | **System**                            |                                           |
-| platform                              | darwin 11.6 arm64                         |
+| platform                              | darwin 12.1 arm64                         |
 | CPU speed test                        | 0.003 s                                   |
