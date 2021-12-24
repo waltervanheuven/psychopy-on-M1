@@ -96,7 +96,7 @@ To find correct path use brew: `$(brew --prefix ....)`.
 
 ## 8. Install pyo
 
-pyo version: 1.0.4
+[pyo](http://ajaxsoundstudio.com/software/pyo/) version: 1.0.4
 
 Installation with `pip install pyo` is successful. However, error in PsychoPy when using `pyo`!
 
@@ -135,12 +135,12 @@ python setup.py install --use-coreaudio --use-double
 
 ## 9. Install Psychtoolbox from source
 
-psychtoolbox version: 3.0.18.2
+psychtoolbox version: 3.0.18.3
 
-Download [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/tree/3.0.18.2).
+Download [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/releases).
 
 ```sh
-cd Psychtoolbox-3-3.0.18.2
+cd Psychtoolbox-3-3.0.18.3
 
 python setup.py install
 ```
