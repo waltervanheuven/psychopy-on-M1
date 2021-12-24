@@ -137,7 +137,7 @@ python setup.py install --use-coreaudio --use-double
 
 [psychtoolbox](http://psychtoolbox.org) version: 3.0.18.3 (BETA)
 
-Download [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/releases).
+Download latest [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/releases) source.
 
 ```sh
 cd Psychtoolbox-3-3.0.18.3
