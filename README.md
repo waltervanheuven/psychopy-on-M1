@@ -135,7 +135,7 @@ python setup.py install --use-coreaudio --use-double
 
 ## 9. Install Psychtoolbox from source
 
-psychtoolbox version: 3.0.18.3
+[psychtoolbox](http://psychtoolbox.org) version: 3.0.18.3 (BETA)
 
 Download [Psychtoolbox](https://github.com/Psychtoolbox-3/Psychtoolbox-3/releases).
 
