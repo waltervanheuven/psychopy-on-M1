@@ -1,6 +1,6 @@
 # PsychoPy v2021.2.3 on an M1 Mac (Apple Silicon)
 
-The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon (arm64) version of PsychoPy on an M1 MacBook Pro running macOS Monterey 12.1. 
+The current version of [PsychoPy](https://www.psychopy.org) runs on M1 Macs through Rosetta 2. Below are instructions to install a native Apple Silicon (arm64) version of PsychoPy on an M1 MacBook Pro running macOS Monterey (version 12.1).
 
 ## 1. Install native Python for M1 Macs
 
@@ -38,7 +38,7 @@ pip install --upgrade pip setuptools wheel
 
 ## 4. Install numpy
 
-numpy version: 1.21.5
+numpy version: 1.22.0
 
 ```sh
 pip install numpy
@@ -64,7 +64,7 @@ To find correct path use brew: `$(brew --prefix ....)`.
 
 ## 6. Install pygame
 
-pygame version: 2.1.0
+pygame version: 2.1.0 (latest pygame 2.1.2 does not work with PsychoPy, issue with pyglet 2.0?)
 
 ```sh
 brew install pkg-config
@@ -74,12 +74,12 @@ brew install portmidi
 ```
 
 ```sh
-pip install pygame
+pip install pygame==2.1.0
 ```
 
 ## 7. Install tables
 
-Current version: 3.6.1
+Current version: 3.7.0
 
 ```sh
 brew install hdf5 c-blosc lzo bzip2
@@ -174,7 +174,9 @@ pip install egi
 pip install iolabs
 pip install pyxid
 pip install SpeechRecognition pyfilesec
-pip install pytest sphinx labjack
+pip install pytest sphinx
+pip install labjack
+pip install msgpack cffi gevent
 ```
 
 ## 13. Install Psychopy
@@ -277,33 +279,25 @@ down       up          clock
 0.1997   -0.1997   2.8003
 
 down          clock
-2.9997   3.0003
+2.9997   3.0004
 2.7997   3.2003
 2.5997   3.4003
-2.3997   3.6003
-2.1997   3.8003
+2.3997   3.6004
+2.1997   3.8004
 1.9997   4.0003
-1.7997   4.2003
+1.7997   4.2004
 1.5997   4.4003
 1.3997   4.6003
-1.1997   4.8003
+1.1997   4.8004
 0.9997   5.0003
-0.7997   5.2003
-0.5997   5.4003
+0.7997   5.2004
+0.5997   5.4004
 0.3997   5.6003
-0.1997   5.8003
+0.1997   5.8004
 The last run should have been precise sub-millisecond
 ```
 
 ## Other issues with fixes
-
-- Audio issues
-
-    Default audio library is `sounddevice`. Switching audio library in PsychoPy Preferences to `PTB` (Psychtoolbox) breaks PsychoPy. Switching to `pyo` works!
-
-- Audio capture not working
-
-    The 'psychtoolbox' library cannot be loaded but is required for audio capture.
 
 - Psychtoolbox is not imported
 
@@ -314,6 +308,10 @@ The last run should have been precise sub-millisecond
 - `System info...` in Help menu fails
 
   Error is due to a bug in psutil: [psutil.cpu_freq() broken on Apple M1](https://github.com/giampaolo/psutil/issues/1892).
+
+- `timeByFramesEx.py` fails to run
+
+  Fix this by commenting out line 39, `#matplotlib.use('Qt4Agg')  # change this to control the plotting 'back end'`.
 
 - Drivers for Apple Silicon Macs
 
@@ -358,4 +356,4 @@ Benchmark wizard report (M1 MacBook Pro, macOS 12.1). Screen size is incorrect (
 | GL_ARB_texture_non_power_of_two       | True                                      |
 | **System**                            |                                           |
 | platform                              | darwin 12.1 arm64                         |
-| CPU speed test                        | 0.003 s                                   |
+| CPU speed test                        | 0.002 s                                   |
