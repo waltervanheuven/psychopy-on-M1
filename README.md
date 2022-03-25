@@ -7,4 +7,3 @@ Instructions for PsychoPy version:
 - [v2022.1.1](v2022.1.1.md)
 - [v2021.2.3](v2021.2.3.md)
 
-Please note that [v2022.1.1](v2022.1.1.md) works. However, there are issues with sound and further testing is needed.
