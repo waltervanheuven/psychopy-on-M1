@@ -4,6 +4,5 @@
 
 Instructions for PsychoPy version:
 
-- [v2022.1.1](v2022.1.1.md)
+- [v2022.1.2](v2022.1.2.md)
 - [v2021.2.3](v2021.2.3.md)
-
