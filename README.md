@@ -8,4 +8,4 @@ Instructions for PsychoPy version:
 - [v2022.1.1](v2022.1.1.md)
 - [v2021.2.3](v2021.2.3.md)
 
- PsychoPy [v2022.1.1 Qt6 version](v2022.1.1%20Qt6.md) works well, although there are remaining issues (e.g. Microphone component not working, Eyetracker components not working).
+ PsychoPy [v2022.1.1 Qt6](v2022.1.1%20Qt6.md) works well, although there are remaining issues (e.g. Microphone component not working, Eyetracker components not working).
