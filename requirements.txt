@@ -19,7 +19,6 @@ gevent
 msgpack
 msgpack-numpy
 psutil
-tables
 pyzmq
 ujson
 moviepy
