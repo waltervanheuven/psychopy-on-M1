@@ -1,0 +1,48 @@
+requests[security]
+future
+cryptography
+pypi_search
+numpy==1.23.5
+scipy
+matplotlib
+pandas
+pillow
+soundfile >= 0.11.0
+python-bidi
+arabic_reshaper
+json_tricks
+xlrd
+openpyxl
+pyserial
+pyyaml
+gevent
+msgpack
+msgpack-numpy
+psutil
+tables
+pyzmq
+ujson
+moviepy
+opencv-python
+python-gitlab
+gitpython
+astunparse
+esprima
+freetype-py
+jedi >= 0.16
+#
+python-vlc >= 3.0.12118
+#
+questplus >= 2019.3; python_version >= "3.6"
+imageio >= 2.5
+imageio-ffmpeg
+#
+pyobjc-core < 8.0
+pyobjc-framework-Quartz
+pyobjc < 8.0
+websocket_client
+markdown-it-py
+ffpyplayer
+#
+tobii-research; python_version <= "3.8"
+egi-pynetstation
