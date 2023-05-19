@@ -45,3 +45,6 @@ ffpyplayer
 #
 tobii-research; python_version <= "3.8"
 egi-pynetstation
+# 
+psychopy-pyo-0.0.1
+psychopy-sounddevice
