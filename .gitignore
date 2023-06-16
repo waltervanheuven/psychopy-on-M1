@@ -2,3 +2,4 @@
 .lsp/*
 .clj-kondo/*
 tmp/*
+venv/*
