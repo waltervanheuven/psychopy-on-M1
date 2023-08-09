@@ -2,7 +2,8 @@ requests[security]
 future
 cryptography
 pypi_search
-numpy==1.23.5
+#numpy==1.23.5
+numpy
 scipy
 matplotlib
 pandas
@@ -46,6 +47,5 @@ ffpyplayer
 tobii-research; python_version <= "3.8"
 egi-pynetstation
 # 
-
-psychopy-sounddevice
-psychopy-pyo
+#psychopy-sounddevice
+#psychopy-pyo
