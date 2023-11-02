@@ -4,4 +4,4 @@
 
 Installation instructions for [latest version of PsychoPy (2023.2.3)](v2023.2.3.md)
 
-Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura. VSync works fine on macOS Monterey. There are also some other issues (e.g. Microphone and Eyetracker components are not yet working).
+Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura/Sonoma. VSync works fine on macOS Monterey. There are also some other issues (e.g. Microphone and Eyetracker components are not yet working).
