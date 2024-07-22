@@ -37,11 +37,11 @@ questplus >= 2019.3; python_version >= "3.6"
 imageio >= 2.5
 imageio-ffmpeg
 #
-#pyobjc-core < 8.0
-pyobjc-core
+pyobjc-core < 8.0
+#pyobjc-core == 10.1
 pyobjc-framework-Quartz
-#pyobjc < 8.0
-pyobjc
+pyobjc < 8.0
+#pyobjc
 websocket_client
 markdown-it-py
 ffpyplayer
