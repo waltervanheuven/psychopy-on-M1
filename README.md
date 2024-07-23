@@ -2,6 +2,6 @@
 
 [PsychoPy](https://www.psychopy.org) runs currently on Apple Silicon Macs through Rosetta 2. I've created instructions to install PsychoPy from source so that it runs natively on Apple Silicon.
 
-Installation instructions for [latest version of PsychoPy (2024.1.5)](v2024.1.5.md)
+Installation instructions for [latest version of PsychoPy (2024.2.0)](v2024.2.0.md)
 
-Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura/Sonoma. VSync works fine on macOS Monterey. There are also some other issues (e.g. Microphone and Eyetracker components are not yet working).
+Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura/Sonoma. VSync works fine on macOS Monterey. There are also some other issues (e.g. import PsychToolBox library fails, Microphone and Eyetracker components are not yet working).
