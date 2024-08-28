@@ -2,8 +2,7 @@ requests[security]
 future
 cryptography
 pypi_search
-#numpy==1.23.5
-numpy
+numpy < 2.0
 scipy
 matplotlib
 pandas
