@@ -31,7 +31,6 @@ dependencies = [
     "pyglet == 1.4.11; platform_system == \"Windows\"",
     "pyglet == 1.5.27; platform_system != \"Windows\"",
     "pillow>=9.4.0",
-    "pyqt6",
     "pandas>=1.5.3",
     "questplus>=2023.1",
     "openpyxl",
@@ -40,7 +39,6 @@ dependencies = [
     "soundfile",
     "imageio",
     "imageio-ffmpeg",
-    #"psychtoolbox",
     # for iohub
     "pywinhook; platform_system == \"Windows\"",
     "gevent",
@@ -57,13 +55,12 @@ dependencies = [
     "javascripthon",
     "websockets",  # new in 2023.2 for session.py
     # for the app
-    "wxPython == 4.2.1",
+    "wxPython == 4.1.1",
     "markdown-it-py",
     "requests",
     "future",  # only to support legacy versions in useVersion
     # supporting plugins
     "pypi-search>=1.2.1",
-    "setuptools==70.3.0",  # py2app issues https://github.com/ronaldoussoren/py2app/issues/531
     # pavlovia connections
     "python-gitlab",
     "gitpython",
