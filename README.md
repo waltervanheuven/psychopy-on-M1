@@ -4,4 +4,4 @@
 
 Installation instructions for [latest version of PsychoPy (2025.1.1)](v2025.1.1.md)
 
-Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura/Sonoma/Sequoia. VSync works fine on macOS Monterey. Unfortunately, a number of components are not yet working because of issues with the PsychToolBox library (Sound, VoiceKey, Microphone, Webcam).
+Latest version works natively on Apple Silicon Macs. However, vsync is not working properly on macOS Ventura/Sonoma/Sequoia. VSync works fine on macOS Monterey. Unfortunately, a number of components are not yet working because of issues with the Psychtoolbox library (Sound, VoiceKey, Microphone, Webcam).
